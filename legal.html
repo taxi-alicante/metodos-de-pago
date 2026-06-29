@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso Legal y Privacidad - Taxi Alicante</title>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: system-ui, -apple-system, sans-serif; margin: 0; background: #ffffff; color: #333; line-height: 1.6; }
+        header { background: #0056b3; color: white; padding: 1.5rem 1rem; text-align: center; border-bottom: 6px solid #ffcc00; }
+        .container { padding: 20px; max-width: 600px; margin: auto; text-align: left; }
+        h2 { color: #0056b3; font-size: 1.2rem; margin-top: 1.5rem; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        p, li { font-size: 0.95rem; }
+        ul { padding-left: 20px; }
+        .btn-volver { display: inline-block; margin-top: 2rem; color: #0056b3; text-decoration: none; font-weight: bold; border-bottom: 2px solid #0056b3; }
+
+        /* === ESTILOS DEL BOTÓN DE SUBIR === */
+        #btn-subir {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #0056b3;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 100;
+            border: 2px solid white;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+
+        #btn-subir.mostrar {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+
+<header id="inicio">
+    <h1>Aviso Legal y Privacidad</h1>
+</header>
+
+<div class="container">
+    <p>En cumplimiento de la legislación española vigente (Ley Órganica 3/2018 de Protección de Datos Personales y Garantía de los Derechos Digitales y la LSSI-CE 34/2002), se exponen las condiciones legales de este sitio web.</p>
+
+    <h2>1. Titularidad del Sitio Web</h2>
+    <p>Esta página web es de carácter estrictamente informativo y pertenece a un <b>Titular Autónomo con Licencia Oficial de Taxi de Alicante</b>. Los servicios de transporte terrestre se realizan bajo el amparo de dicha licencia municipal y de acuerdo con el régimen fiscal aplicable a la actividad.</p>
+
+    <h2>2. Protección de Datos (Privacidad)</h2>
+    <p><b>Esta web NO recopila, almacena ni trata ningún tipo de dato de carácter personal de los usuarios.</b></p>
+    <ul>
+        <li>No existen formularios de contacto.</li>
+        <li>No se solicitan nombres, teléfonos ni correos electrónicos.</li>
+        <li>No se realizan registros de usuarios.</li>
+    </ul>
+
+    <h2>3. Política de Cookies</h2>
+    <p>Este sitio web es estático y <b>no utiliza cookies de seguimiento</b>, ni herramientas analíticas de terceros que rastreen tu navegación o capturen datos privados.</p>
+
+    <h2>4. Propiedad Intelectual y Enlaces</h2>
+    <p>Los enlaces de retorno y las referencias a aplicaciones externas (como PIDETAXI) pertenecen a sus respectivos titulares. El uso de los mismos es puramente informativo para facilitar la gestión del servicio al pasajero durante el trayecto.</p>
+
+    <a href="index.html" class="btn-volver">← Volver a Métodos de Pago</a>
+</div>
+
+<!-- BOTÓN DE SUBIR (aparece al hacer scroll) -->
+<a href="#inicio" id="btn-subir" title="Subir">↑</a>
+
+<script>
+    // Script del botón de subir
+    const btnSubir = document.getElementById('btn-subir');
+
+    window.onscroll = function() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            btnSubir.classList.add('mostrar');
+        } else {
+            btnSubir.classList.remove('mostrar');
+        }
+    };
+</script>
+
+</body>
+</html>
