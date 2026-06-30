@@ -7,6 +7,16 @@
     <meta name="theme-color" content="#0056b3">
     <meta name="description" content="Opciones de pago disponibles para tu trayecto en Taxi en Alicante. Información sobre métodos tradicionales y pago con Bitcoin (Lightning y On-Chain).">
     <title>Métodos de Pago - Taxi Alicante</title>
+    
+    <!-- ICONOS Y FAVICONS (exactamente igual que el proyecto hermano) -->
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    
     <style>
         :root { 
             --azul: #0056b3; 
@@ -176,6 +186,11 @@
             btnSubir.classList.remove('mostrar');
         }
     };
+
+    // Registrar Service Worker (exactamente igual que el proyecto hermano)
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js');
+    }
 </script>
 
 </body>
