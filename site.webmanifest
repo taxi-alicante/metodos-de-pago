@@ -1,7 +1,7 @@
 {
-    "name": "Taxi Alicante - Métodos de Pago",
-    "short_name": "Taxi Alicante",
-    "description": "Opciones de pago para tu trayecto en Taxi en Alicante",
+    "name": "Alicante Taxi - Pagos",
+    "short_name": "Taxi Pagos",
+    "description": "Opciones de pago para tu trayecto de Taxi en Alicante",
     "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#0056b3",
