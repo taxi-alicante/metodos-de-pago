@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="theme-color" content="#0056b3">
+    <meta name="description" content="Payment options available for your Taxi trip in Alicante. Information about traditional methods and Bitcoin payment (Lightning and On-Chain).">
+    <title>Payment Methods - Taxi Alicante</title>
+    
+    <!-- ICONOS Y FAVICONS -->
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    
+    <style>
+        :root { 
+            --azul: #0056b3; 
+            --verde: #25D366; 
+            --negro: #222; 
+            --amarillo: #ffcc00; 
+            --btc: #F7931A; 
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: system-ui, -apple-system, sans-serif; margin: 0; text-align: center; background: #ffffff; color: #333; line-height: 1.5; }
+        header { background: var(--azul); color: white; padding: 2.5rem 1rem; border-bottom: 6px solid var(--amarillo); position: relative; }
+        .container { padding: 20px; max-width: 450px; margin: auto; }
+        
+        .bienvenida { text-align: left; background: #f0f4f8; padding: 20px; border-radius: 15px; margin-bottom: 25px; border: 1px solid #d1d9e0; }
+        .bienvenida h2 { font-size: 1.1rem; margin-top: 0; color: var(--azul); text-transform: uppercase; letter-spacing: 1px; }
+        .item { display: flex; align-items: flex-start; margin-bottom: 12px; font-size: 0.95rem; }
+        .check { color: var(--azul); margin-right: 10px; font-weight: bold; }
+
+        details { margin-bottom: 12px; width: 100%; text-align: left; }
+        details summary { list-style: none; list-style-type: none; }
+        details summary::-webkit-details-marker { display: none; }
+
+        .btn-summary { display: flex; align-items: center; justify-content: center; padding: 16px; border-radius: 12px; font-weight: bold; color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer; user-select: none; transition: 0.2s; }
+        .btn-clasico { background: var(--azul); }
+        .btn-bitcoin { background: var(--btc); }
+        
+        .icono { margin-right: 10px; font-size: 1.3rem; }
+        .seccion-titulo { font-size: 0.8rem; text-transform: uppercase; color: #888; margin: 25px 0 8px 0; font-weight: bold; letter-spacing: 1px; text-align: center; }
+
+        .info-desplegada { background: #f9f9f9; padding: 20px; border-radius: 0 0 12px 12px; border: 1px solid #eee; border-top: none; margin-top: -4px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); font-size: 0.95rem; }
+        .info-desplegada p { margin: 0 0 12px 0; }
+        .info-desplegada ul { margin: 0; padding-left: 20px; }
+        .info-desplegada li { margin-bottom: 8px; }
+        
+        .subtitulo-cripto { font-weight: bold; color: var(--btc); margin-top: 15px; display: block; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; }
+        .wallet-tag { display: inline-block; background: #e2e8f0; color: #4a5568; padding: 3px 8px; border-radius: 6px; font-size: 0.8rem; font-weight: bold; margin-right: 4px; margin-top: 5px; }
+
+        .btn-volver { display: flex; align-items: center; justify-content: center; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: bold; color: #444; background: #eee; border: 1px solid #ccc; font-size: 0.9rem; margin-top: 30px; box-shadow: none; }
+
+        .footer { font-size: 0.7rem; color: #999; margin-top: 40px; padding-bottom: 80px; text-align: center; }
+
+        .idioma-float {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            line-height: 1;
+        }
+
+        #btn-subir {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: var(--azul);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 100;
+            border: 2px solid white;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+
+        #btn-subir.mostrar {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+
+<header id="inicio">
+    <a href="index.html" class="idioma-float" title="Cambiar a Español">🇪🇸</a>
+    <div style="font-size: 3rem; margin-bottom: 0.5rem;">💳</div>
+    <h1>Payment Methods</h1>
+    <p>Choose your preferred payment option for the trip</p>
+</header>
+
+<div class="container">
+    <div class="bienvenida">
+        <h2>Transparency and Convenience</h2>
+        <div class="item"><span class="check">✓</span> <span><b>No surprises:</b> Charges based strictly on the official taximeter amount or fixed price.</span></div>
+        <div class="item"><span class="check">✓</span> <span><b>Freedom:</b> You decide how to pay the fare upon arrival at your destination.</span></div>
+    </div>
+
+    <div class="seccion-titulo">Available Options</div>
+
+    <!-- BUTTON 1: TRADITIONAL METHODS -->
+    <details>
+        <summary class="btn-summary btn-clasico">
+            <span class="icono">💶</span> CARD, MOBILE PAYMENT OR CASH
+        </summary>
+        <div class="info-desplegada">
+            <p>We accept the following conventional payment methods directly in the vehicle:</p>
+            <ul>
+                <li><b>Cards:</b> Visa, Mastercard, American Express.</li>
+                <li><b>Mobile Payment:</b> Apple Pay, Google Pay, Bizum Pay.</li>
+                <li><b>Revolut:</b> Revtag.</li>
+                <li><b>Cash:</b> Local currency (Euros).</li>
+            </ul>
+        </div>
+    </details>
+
+    <!-- BUTTON 2: BITCOIN -->
+    <details>
+        <summary class="btn-summary btn-bitcoin">
+            <span class="icono">₿</span> PAY WITH BITCOIN (BTC)
+        </summary>
+        <div class="info-desplegada">
+            <p>We accept Bitcoin payments adapted to the type of trip for maximum security and speed:</p>
+            
+            <span class="subtitulo-cripto">1. Urban Trips (Taximeter)</span>
+            <p>Payment is made upon arrival using <b>Lightning Network</b> (processed through Coinos). We will generate a dynamic QR code on the smartphone screen; the payment settles in 1 second with almost zero network fees.</p>
+            
+            <span class="subtitulo-cripto">2. Intercity or Airport Trips (Fixed Price)</span>
+            <p>If you request the <b>Fixed Price option through the PIDETAXI App</b>, we allow direct <b>On-Chain (Main Network)</b> payment to the wallet.</p>
+            <p>We set the amount in Satoshis and you make the transfer when getting in the car; the trip (minimum 10-15 min) provides the necessary time to process the confirmation on the Blockchain during the journey.</p>
+            
+            <p style="margin-top: 15px; margin-bottom: 5px;"><b>Recommended Wallets:</b></p>
+            <span class="wallet-tag">Coinos</span>
+            <span class="wallet-tag">Aqua Wallet</span>
+            <span class="wallet-tag">Phoenix</span>
+            <span class="wallet-tag">Blink</span>
+        </div>
+    </details>
+
+    <!-- BACK BUTTON -->
+    <a href="https://taxi-alicante.github.io/en.html" class="btn btn-volver">
+        <span class="icono">🚖</span> BACK TO CONTACT / BOOKINGS
+    </a>
+
+    <div class="footer">
+        © <span id="year"></span> Taxi Alicante - Independent Website.<br>
+        <a href="legal_en.html" style="color: #999; text-decoration: none; border-bottom: 1px solid #ccc;">Legal Notice and Privacy</a>
+    </div>
+</div>
+
+<!-- SCROLL TO TOP BUTTON -->
+<a href="#inicio" id="btn-subir" title="Scroll to top">↑</a>
+
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const btnSubir = document.getElementById('btn-subir');
+
+    window.onscroll = function() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            btnSubir.classList.add('mostrar');
+        } else {
+            btnSubir.classList.remove('mostrar');
+        }
+    };
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js');
+    }
+</script>
+
+</body>
+</html>

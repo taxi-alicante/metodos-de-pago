@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="theme-color" content="#0056b3">
+    <meta name="description" content="Legal Notice and Privacy Policy - Taxi Alicante">
+    <title>Legal Notice and Privacy - Taxi Alicante</title>
+    
+    <!-- ICONOS Y FAVICONS -->
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: system-ui, -apple-system, sans-serif; margin: 0; background: #ffffff; color: #333; line-height: 1.6; }
+        header { background: #0056b3; color: white; padding: 1.5rem 1rem; text-align: center; border-bottom: 6px solid #ffcc00; }
+        .container { padding: 20px; max-width: 600px; margin: auto; text-align: left; }
+        h2 { color: #0056b3; font-size: 1.2rem; margin-top: 1.5rem; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        p, li { font-size: 0.95rem; }
+        ul { padding-left: 20px; }
+        .btn-volver { display: inline-block; margin-top: 2rem; color: #0056b3; text-decoration: none; font-weight: bold; border-bottom: 2px solid #0056b3; }
+
+        #btn-subir {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #0056b3;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 100;
+            border: 2px solid white;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+
+        #btn-subir.mostrar {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+
+<header id="inicio">
+    <h1>Legal Notice and Privacy</h1>
+</header>
+
+<div class="container">
+    <p>In compliance with current Spanish legislation (Organic Law 3/2018 on Personal Data Protection and Guarantee of Digital Rights and LSSI-CE 34/2002), the legal conditions of this website are set out below.</p>
+
+    <h2>1. Website Ownership</h2>
+    <p>This website is strictly for informational purposes and belongs to an <b>Independent Holder with an Official Taxi License in Alicante</b>. Land transport services are carried out under the protection of said municipal license and in accordance with the tax regime applicable to the activity.</p>
+
+    <h2>2. Data Protection (Privacy)</h2>
+    <p><b>This website does NOT collect, store or process any type of personal data from users.</b></p>
+    <ul>
+        <li>There are no contact forms.</li>
+        <li>No names, phone numbers or emails are requested.</li>
+        <li>No user registrations are made.</li>
+    </ul>
+
+    <h2>3. Cookie Policy</h2>
+    <p>This website is static and <b>does not use tracking cookies</b>, nor third-party analytical tools that track your browsing or capture private data.</p>
+
+    <h2>4. Intellectual Property and Links</h2>
+    <p>The return links and references to external applications (such as PIDETAXI) belong to their respective owners. Their use is purely informative to facilitate service management for the passenger during the journey.</p>
+
+    <a href="en.html" class="btn-volver">← Back to Payment Methods</a>
+</div>
+
+<a href="#inicio" id="btn-subir" title="Scroll to top">↑</a>
+
+<script>
+    const btnSubir = document.getElementById('btn-subir');
+
+    window.onscroll = function() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            btnSubir.classList.add('mostrar');
+        } else {
+            btnSubir.classList.remove('mostrar');
+        }
+    };
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js');
+    }
+</script>
+
+</body>
+</html>
